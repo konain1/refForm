@@ -9,11 +9,54 @@ import Login from './Login'
 function App() {
 
   
-  const [count, setCount] = useState(0)
+
+
+  const [user,setUser] = useState([{name:`leo`, age:4,email:`leo@gmail.com`,phone:99}])
+
+
+
+  const createCard = (name,email,age,phone)=>{
+    
+
+    const newCard  = {
+      
+      name:`${name}`,
+      age:`${age}`,
+      email:`${email}`,
+      phone:`${phone}`
+
+    }
+    setUser([...user,newCard])
+
+    console.log(user)
+
+  }
+
 
   return (
     <>
-     <Login/>
+    <div className='container'>
+
+    {
+      user.map((item,key)=>{
+        return(
+          <>
+          <div className='card'>
+          <h1>Name:{item.name}</h1>
+          <h2>age {item.age}</h2>
+          <h3>email : {item.email}</h3>
+          <h3>phone:{item.phone}</h3>
+          </div>
+          </>
+        )
+      })
+    }
+    
+  
+
+    </div>
+
+     <Login createCard={createCard}/>
     </>
   )
 }

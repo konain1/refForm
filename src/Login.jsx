@@ -1,7 +1,7 @@
 import { useRef } from "react"
 
 
-const Login = ()=>{
+const Login = ({createCard})=>{
 
     const nameRef = useRef(null)
     const emailRef = useRef()
@@ -11,8 +11,8 @@ const Login = ()=>{
     
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(nameRef.current.value)
-        console.log(emailRef.current.value)
+       
+        createCard(nameRef.current.value,emailRef.current.value,ageRef.current.value,phoneRef.current.value)
     }
     return<>
     <h1>login</h1>
